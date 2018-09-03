@@ -2,7 +2,7 @@ package wajdihh.geopoint.data.remote;
 
 import java.util.List;
 
-import io.reactivex.Single;
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Url;
 import wajdihh.geopoint.data.entities.GeoPoint;
@@ -19,12 +19,12 @@ public interface GeoPointService {
      */
 
     @GET("/tests/mobile5/points.json")
-    Single<List<String>> getAllPointsURL();
+    Observable<List<String>> getAllPointsURL();
 
     /**
      * Retourner le point geo par URL donnée
      */
 
     @GET
-    Single<GeoPoint> getPoint(@Url String url);
+    Observable<GeoPoint> getPoint(@Url String url);
 }

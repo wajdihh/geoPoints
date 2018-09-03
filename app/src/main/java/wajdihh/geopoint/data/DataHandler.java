@@ -36,11 +36,11 @@ public class DataHandler {
 
         List<GeoPoint> myPoints = new ArrayList<>();
 
-        mGeoPointService.getAllPointsURL().toObservable()
+        mGeoPointService.getAllPointsURL()
                 //Iteration de la liste des urls vers une SEULE url observable
                 .flatMapIterable(list -> list)
                 //Recuperer chaque point de chaque URL
-                .flatMap(url -> mGeoPointService.getPoint(url).toObservable())
+                .flatMap(url -> mGeoPointService.getPoint(url))
                 //Attacher l observable au Thread IO car c'une operation en background
                 .subscribeOn(Schedulers.io())
                 //L'obserbateur sera le Thread UI car apres le traitement on va faire un refresh de la liste
