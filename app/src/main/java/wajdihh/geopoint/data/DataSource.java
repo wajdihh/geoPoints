@@ -49,6 +49,7 @@ public class DataSource {
                 .flatMapIterable(url -> url)
                 // Recuperer chaque point de chaque URL et retourner la liste des points à la fin
                 .flatMap(mGeoPointRemoteDS::getPoint)
+                //Ajouter la GeoHash au point recuperé avant de le sauvegardé dans la base
                 .map(this::buildPointWithGeoHash).toList()
                 // Synchroniser la Liste dans le cache
                 /**
@@ -70,7 +71,7 @@ public class DataSource {
 
                     @Override
                     public void onNext(List<GeoPoint> geoPoints) {
-                        System.out.println("Siwe in database "+geoPoints.size());
+                        System.out.println("off in database "+geoPoints.size());
                     }
 
                     @Override
