@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GeoPoint</string>
+    <string name="lab_group">Groupe</string>
 </resources>

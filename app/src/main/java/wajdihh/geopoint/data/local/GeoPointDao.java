@@ -30,9 +30,9 @@ public interface GeoPointDao {
     @Insert
     void insertAll(List<GeoPoint> list);
 
-    @Query("DELETE FROM geopoint")
+    @Query("DELETE FROM GeoPoint")
     void deleteAll();
 
-    @Query("SELECT * FROM geopoint")
+    @Query("SELECT * FROM GeoPoint")
     List<GeoPoint> getAll();
 }

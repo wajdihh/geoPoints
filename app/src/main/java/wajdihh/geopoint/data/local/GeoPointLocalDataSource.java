@@ -5,6 +5,7 @@ import android.content.Context;
 import java.util.List;
 
 import wajdihh.geopoint.data.entities.GeoPoint;
+import wajdihh.geopoint.data.entities.GeoPointGroup;
 
 /**
  * Created by wajdihh on 04/09/2018.
@@ -29,5 +30,22 @@ public class GeoPointLocalDataSource {
 
     public List<GeoPoint> getAll() {
         return myDatabase.geoPointDao().getAll();
+    }
+
+
+    public void deleteAllGroups(){
+        myDatabase.geoPointGroupDao().deleteAll();
+    }
+
+    public void insertGroup(GeoPointGroup group){
+        myDatabase.geoPointGroupDao().insert(group);
+    }
+
+    public GeoPointGroup getGroup(String id){
+        return myDatabase.geoPointGroupDao().getGroup(id);
+    }
+
+    public int getCount(){
+        return myDatabase.geoPointGroupDao().getCount();
     }
 }
