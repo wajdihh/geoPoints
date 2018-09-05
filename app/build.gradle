@@ -24,8 +24,8 @@ android {
 
 dependencies {
     /*
-         * My implementations
-         */
+             * My implementations
+             */
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
@@ -38,8 +38,8 @@ dependencies {
     implementation 'android.arch.persistence.room:rxjava2:1.1.1'
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
     /*
-         * Default Android implementations
-         */
+             * Default Android implementations
+             */
     implementation 'com.android.support:support-annotations:27.1.1'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -47,7 +47,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     //Pour explorer la database local : https://github.com/amitshekhariitbhu/Android-Debug-Database
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.4'
+    implementation project(':library')
 }

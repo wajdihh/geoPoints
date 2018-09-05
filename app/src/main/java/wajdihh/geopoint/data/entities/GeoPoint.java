@@ -14,10 +14,15 @@ public class GeoPoint {
 
     @PrimaryKey(autoGenerate = true)
     private long id;
+
     @ColumnInfo(name = "latitude")
-    private String latitude;
+    private double latitude;
+
     @ColumnInfo(name = "longitude")
-    private String longitude;
+    private double longitude;
+
+    @ColumnInfo(name = "geohash")
+    private String geoHash;
 
     public long getId() {
         return id;
@@ -27,19 +32,27 @@ public class GeoPoint {
         this.id = id;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public String getGeoHash() {
+        return geoHash;
+    }
+
+    public void setGeoHash(String geoHash) {
+        this.geoHash = geoHash;
     }
 }

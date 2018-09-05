@@ -1,6 +1,9 @@
 package wajdihh.geopoint.data;
 
 import android.content.Context;
+import android.location.Location;
+
+import com.fonfon.geohash.GeoHash;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +48,8 @@ public class DataSource {
                 // faire l'iteration de chaque URL de la liste
                 .flatMapIterable(url -> url)
                 // Recuperer chaque point de chaque URL et retourner la liste des points à la fin
-                .flatMap(mGeoPointRemoteDS::getPoint).toList()
+                .flatMap(mGeoPointRemoteDS::getPoint)
+                .map(this::buildPointWithGeoHash).toList()
                 // Synchroniser la Liste dans le cache
                 /**
                  * Dans le cas ou la liste presente des millions des data on peut decouper la liste par lot
@@ -84,5 +88,24 @@ public class DataSource {
         return myPoints;
     }
 
+
+    /**
+     * Cette methode permet d'ajouter le GeoHash a un point
+     * Le geoHash permet de regrouper les points par localisation la plus proche
+     * Voir : https://tech.willhaben.at/geo-clustering-3-000-000-points-on-the-fly-a-brief-how-to-9f04d8d5b3a7
+     *
+     * @param g
+     */
+    private GeoPoint buildPointWithGeoHash(GeoPoint g) {
+
+        Location location = new Location("geohash");
+        location.setLatitude(g.getLatitude());
+        location.setLongitude(g.getLongitude());
+
+        GeoHash hash = GeoHash.fromLocation(location, 9);
+        g.setGeoHash(hash.toString());
+
+        return g;
+    }
 
 }
