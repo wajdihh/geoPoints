@@ -12,7 +12,7 @@ import wajdihh.geopoint.data.entities.GeoPoint;
  * L interface des methodes web services
  */
 
-public interface GeoPointService {
+public interface GeoPointRemoteDataSource {
 
     /**
      * Retourner toutes les URLs
