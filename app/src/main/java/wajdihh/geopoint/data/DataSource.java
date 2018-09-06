@@ -69,10 +69,11 @@ public class DataSource {
                  */
                 .doOnSuccess(mGeoPointLocalDS::sync).toObservable()
                 //Quand on termine la synchro on recuperer le contenu de la table group pour l afficher dans la liste
-                .flatMap(mGeoPointLocalDS::getAllGroups)
+                .flatMapSingle(t->mGeoPointLocalDS.getAllGroups())
+                .singleOrError()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
+                .subscribe(observer);
     }
 
     /**
