@@ -4,7 +4,8 @@ import android.content.Context;
 
 import java.util.List;
 
-import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.SingleObserver;
+import io.reactivex.disposables.Disposable;
 import wajdihh.geopoint.data.DataSource;
 import wajdihh.geopoint.data.entities.GeoPointGroup;
 
@@ -25,7 +26,7 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void attachView(MainView v) {
-        mMainView =  v;
+        mMainView = v;
     }
 
     @Override
@@ -33,12 +34,17 @@ public class MainPresenterImpl implements MainPresenter {
 
         //Show progress
         mMainView.showProgress();
-        mDataSource.loadData(new DisposableSingleObserver() {
+        mDataSource.loadData(new SingleObserver<List<GeoPointGroup>>() {
             @Override
-            public void onSuccess(Object o) {
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onSuccess(List<GeoPointGroup> geoPointGroups) {
                 //Hide
                 mMainView.hideProgress();
-                List<GeoPointGroup> groups = (List<GeoPointGroup>) o;
+                List<GeoPointGroup> groups = geoPointGroups;
                 mMainView.onSuccessLoad(groups);
             }
 

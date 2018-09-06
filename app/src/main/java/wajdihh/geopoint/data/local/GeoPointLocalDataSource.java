@@ -32,6 +32,9 @@ public class GeoPointLocalDataSource {
     public Single<List<GeoPointGroup>> getAllGroups() {
         return myDatabase.geoPointGroupDao().getAll();
     }
+     public Single<List<GeoPoint>> getAllPointForGroup(String groupID) {
+        return myDatabase.geoPointDao().getAllPointForGroup(groupID);
+    }
 
 
     public void deleteAllGroups(){

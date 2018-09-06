@@ -1,6 +1,7 @@
 package wajdihh.geopoint.data.entities;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -9,7 +10,7 @@ import android.support.annotation.NonNull;
  * Model du Group des points
  */
 
-@Entity
+@Entity(indices = {@Index("id")})
 public class GeoPointGroup {
 
 

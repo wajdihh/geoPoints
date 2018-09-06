@@ -7,6 +7,7 @@ import android.arch.persistence.room.Transaction;
 
 import java.util.List;
 
+import io.reactivex.Single;
 import wajdihh.geopoint.data.entities.GeoPoint;
 
 /**
@@ -33,6 +34,6 @@ public interface GeoPointDao {
     @Query("DELETE FROM GeoPoint")
     void deleteAll();
 
-    @Query("SELECT * FROM GeoPoint")
-    List<GeoPoint> getAll();
+    @Query("SELECT * FROM GeoPoint WHERE groupId=:groupID")
+    Single<List<GeoPoint>> getAllPointForGroup(final String groupID);
 }

@@ -5,8 +5,10 @@ import android.location.Location;
 
 import com.fonfon.geohash.GeoHash;
 
+import java.util.List;
+
+import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 import wajdihh.geopoint.R;
 import wajdihh.geopoint.data.entities.GeoPoint;
@@ -48,9 +50,7 @@ public class DataSource {
      * 3 - Sauvegarder dans la base
      * 4 - Retourner la liste des groupes
      */
-    public void loadData(DisposableSingleObserver observer) {
-
-
+    public void loadData(SingleObserver<List<GeoPointGroup>> observer) {
 
         mGeoPointRemoteDS.getAllPointsURL()
                 // faire l'iteration de chaque URL de la liste
@@ -80,6 +80,13 @@ public class DataSource {
                 .subscribe();
     }
 
+    public void loadPointByGroupId(String groupID,SingleObserver<List<GeoPoint>> observer) {
+
+   mGeoPointLocalDS.getAllPointForGroup(groupID)
+           .subscribeOn(Schedulers.io())
+           .observeOn(AndroidSchedulers.mainThread())
+           .subscribe(observer);
+    }
 
     /**
      * Cette methode permet d'ajouter le GeoHash a un point
