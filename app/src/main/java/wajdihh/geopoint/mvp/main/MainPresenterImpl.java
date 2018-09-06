@@ -52,6 +52,7 @@ public class MainPresenterImpl implements MainPresenter {
             public void onError(Throwable e) {
                 //Hide
                 mMainView.hideProgress();
+                mMainView.onErrorLoad(e);
             }
         });
     }

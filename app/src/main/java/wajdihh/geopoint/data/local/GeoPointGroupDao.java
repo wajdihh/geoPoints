@@ -21,10 +21,6 @@ public interface GeoPointGroupDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(GeoPointGroup point);
 
-
-    @Query("DELETE FROM GeoPointGroup")
-    void deleteAll();
-
     @Query("SELECT * FROM GeoPointGroup")
     Single<List<GeoPointGroup>> getAll() ;
 

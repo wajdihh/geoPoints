@@ -26,7 +26,6 @@ public class GeoPointLocalDataSource {
      */
     public void sync(List<GeoPoint> list){
         myDatabase.geoPointDao().sync(list);
-
     }
 
     public Single<List<GeoPointGroup>> getAllGroups() {
@@ -34,11 +33,6 @@ public class GeoPointLocalDataSource {
     }
      public Single<List<GeoPoint>> getAllPointForGroup(String groupID) {
         return myDatabase.geoPointDao().getAllPointForGroup(groupID);
-    }
-
-
-    public void deleteAllGroups(){
-        myDatabase.geoPointGroupDao().deleteAll();
     }
 
     public void insertGroup(GeoPointGroup group){

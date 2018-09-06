@@ -3,4 +3,5 @@
     <string name="lab_group">Groupe</string>
     <string name="msg_error_data">Oups, Erreur de chargement de données</string>
     <string name="msg_sucess_data">Chargement effectué avec succès !</string>
+    <string name="msg_op_running">Opération en cours ...</string>
 </resources>

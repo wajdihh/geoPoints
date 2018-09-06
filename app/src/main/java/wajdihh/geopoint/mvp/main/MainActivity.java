@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity implements MainView, MyRecyc
 
     private MainPresenter mainPresenter;
     private MyRecyclerViewAdapter adapter;
-
     private ProgressBar mProgress;
+    private boolean isRunnig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,10 @@ public class MainActivity extends AppCompatActivity implements MainView, MyRecyc
         switch (item.getItemId()) {
             // action with ID action_refresh was selected
             case R.id.action_refresh:
+                if(isRunnig){
+                    Toast.makeText(this,getString(R.string.msg_op_running),Toast.LENGTH_SHORT).show();
+                    break;
+                }
                 mainPresenter.loadData();
                 break;
             default:
@@ -75,11 +79,13 @@ public class MainActivity extends AppCompatActivity implements MainView, MyRecyc
 
     @Override
     public void showProgress() {
+        isRunnig=true;
         mProgress.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
+        isRunnig=false;
         mProgress.setVisibility(View.GONE);
     }
 

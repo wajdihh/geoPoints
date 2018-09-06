@@ -80,12 +80,17 @@ public class DataSource {
                 .subscribe();
     }
 
-    public void loadPointByGroupId(String groupID,SingleObserver<List<GeoPoint>> observer) {
+    /**
+     * Retourner les ponints local pour un group donnée
+     * @param groupID
+     * @param observer
+     */
+    public void loadPointByGroupId(String groupID, SingleObserver<List<GeoPoint>> observer) {
 
-   mGeoPointLocalDS.getAllPointForGroup(groupID)
-           .subscribeOn(Schedulers.io())
-           .observeOn(AndroidSchedulers.mainThread())
-           .subscribe(observer);
+        mGeoPointLocalDS.getAllPointForGroup(groupID)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
     }
 
     /**
