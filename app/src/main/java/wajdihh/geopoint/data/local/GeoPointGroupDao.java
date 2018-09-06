@@ -7,7 +7,7 @@ import android.arch.persistence.room.Query;
 
 import java.util.List;
 
-import io.reactivex.Single;
+import io.reactivex.Observable;
 import wajdihh.geopoint.data.entities.GeoPointGroup;
 
 /**
@@ -22,7 +22,7 @@ public interface GeoPointGroupDao {
     void insert(GeoPointGroup point);
 
     @Query("SELECT * FROM GeoPointGroup")
-    Single<List<GeoPointGroup>> getAll() ;
+    Observable<List<GeoPointGroup>> getAll() ;
 
     @Query("SELECT * FROM GeoPointGroup WHERE id LIKE:id LIMIT 1")
     GeoPointGroup getGroup(String id);
