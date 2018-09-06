@@ -28,8 +28,8 @@ public class GeoPointLocalDataSource {
 
     }
 
-    public List<GeoPoint> getAll() {
-        return myDatabase.geoPointDao().getAll();
+    public List<GeoPointGroup> getAllGroups() {
+        return myDatabase.geoPointGroupDao().getAll();
     }
 
 

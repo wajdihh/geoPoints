@@ -24,8 +24,8 @@ android {
 
 dependencies {
     /*
-             * My implementations
-             */
+     * My implementations
+     */
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
@@ -37,9 +37,12 @@ dependencies {
     implementation 'android.arch.persistence.room:runtime:1.1.1'
     implementation 'android.arch.persistence.room:rxjava2:1.1.1'
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    //Recycle View
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
     /*
-             * Default Android implementations
-             */
+     * Default Android implementations
+     */
     implementation 'com.android.support:support-annotations:27.1.1'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'

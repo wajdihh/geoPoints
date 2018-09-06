@@ -1,6 +1,4 @@
-package wajdihh.geopoint.mvp;
-
-import android.view.View;
+package wajdihh.geopoint.mvp.main;
 
 /**
  * Created by wajdihh on 03/09/2018.
@@ -10,7 +8,7 @@ import android.view.View;
 
 public interface  MainPresenter {
 
-    void attachView(View v);
+    void attachView(MainView v);
 
     void loadData();
 

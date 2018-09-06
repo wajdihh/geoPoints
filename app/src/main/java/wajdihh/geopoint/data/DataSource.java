@@ -5,11 +5,8 @@ import android.location.Location;
 
 import com.fonfon.geohash.GeoHash;
 
-import java.util.List;
-
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import wajdihh.geopoint.R;
 import wajdihh.geopoint.data.entities.GeoPoint;
@@ -51,7 +48,7 @@ public class DataSource {
      * 3 - Sauvegarder dans la base
      * 4 - Retourner la liste des groupes
      */
-    public void loadData() {
+    public void loadData(Observer observer) {
 
         mGeoPointRemoteDS.getAllPointsURL()
                 // faire l'iteration de chaque URL de la liste
@@ -69,30 +66,10 @@ public class DataSource {
                  * .flatMap(mGeoPointRemoteDS::getPoint).buffer(10000)
                  */
                 .doOnSuccess(mGeoPointLocalDS::sync).toObservable()
-                .doOnComplete(mGeoPointLocalDS::getAll)
+                .doOnComplete(mGeoPointLocalDS::getAllGroups)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<GeoPoint>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(List<GeoPoint> geoPoints) {
-                        System.out.println("off in database " + geoPoints.size());
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+                .subscribe();
 
     }
 

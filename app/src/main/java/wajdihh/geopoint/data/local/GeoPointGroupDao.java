@@ -25,7 +25,7 @@ public interface GeoPointGroupDao {
     void deleteAll();
 
     @Query("SELECT * FROM GeoPointGroup")
-    List<GeoPointGroup> getAll();
+    List<GeoPointGroup> getAll() ;
 
     @Query("SELECT * FROM GeoPointGroup WHERE id LIKE:id LIMIT 1")
     GeoPointGroup getGroup(String id);
