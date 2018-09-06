@@ -7,6 +7,7 @@ import android.arch.persistence.room.Query;
 
 import java.util.List;
 
+import io.reactivex.Single;
 import wajdihh.geopoint.data.entities.GeoPointGroup;
 
 /**
@@ -25,7 +26,7 @@ public interface GeoPointGroupDao {
     void deleteAll();
 
     @Query("SELECT * FROM GeoPointGroup")
-    List<GeoPointGroup> getAll() ;
+    Single<List<GeoPointGroup>> getAll() ;
 
     @Query("SELECT * FROM GeoPointGroup WHERE id LIKE:id LIMIT 1")
     GeoPointGroup getGroup(String id);

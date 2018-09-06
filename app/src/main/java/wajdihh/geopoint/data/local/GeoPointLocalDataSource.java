@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.List;
 
+import io.reactivex.Single;
 import wajdihh.geopoint.data.entities.GeoPoint;
 import wajdihh.geopoint.data.entities.GeoPointGroup;
 
@@ -28,7 +29,7 @@ public class GeoPointLocalDataSource {
 
     }
 
-    public List<GeoPointGroup> getAllGroups() {
+    public Single<List<GeoPointGroup>> getAllGroups() {
         return myDatabase.geoPointGroupDao().getAll();
     }
 
